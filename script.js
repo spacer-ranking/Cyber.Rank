@@ -274,7 +274,7 @@ async function loadPage(page) {
     }
 }
 
-// Рейтинг
+// Рейтинг (без кнопок создания)
 async function loadRanking() {
     try {
         const response = await fetch('/api/teams/ranking');
@@ -283,12 +283,7 @@ async function loadRanking() {
         let html = `
             <div class="section-header">
                 <h2>Рейтинг команд</h2>
-                ${currentUser?.role === 'leader' ? `
-                    <div class="leader-actions">
-                        <button class="create-btn" onclick="window.showCreateTeamModal()">+ Создать команду</button>
-                        <button class="create-btn" onclick="window.showCreateMatchModal()">+ Создать матч</button>
-                    </div>
-                ` : ''}
+                <!-- Кнопки создания команд и матчей УБРАНЫ из рейтинга -->
             </div>
             <div class="ranking-grid">
         `;
@@ -321,7 +316,7 @@ async function loadRanking() {
     }
 }
 
-// Все команды
+// Все команды (только кнопка создания команды)
 async function loadTeams() {
     try {
         const response = await fetch('/api/teams');
@@ -367,7 +362,7 @@ async function loadTeams() {
     }
 }
 
-// Матчи
+// Матчи (только кнопка создания матча)
 async function loadMatches() {
     try {
         const response = await fetch('/api/matches');
